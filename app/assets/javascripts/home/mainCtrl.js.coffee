@@ -13,5 +13,5 @@ app.controller('MainCtrl', ['$scope', 'posts',
       $scope.link = ''
 
     $scope.incrementUpvotes = (post)->
-      post.upvotes += 1
+      posts.upvote(post)
 ])

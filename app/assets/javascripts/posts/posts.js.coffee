@@ -12,5 +12,9 @@ app.factory('posts', ['$http'
       $http.post('/posts.json', post).success( (data)->
         o.posts.push(data)
       )
+    o.upvote = (post)->
+      $http.put("/posts/#{post.id}/upvote.json").success( (data)->
+        post.upvotes += 1
+      )
     o
 ])
