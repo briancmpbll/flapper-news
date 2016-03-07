@@ -5,11 +5,9 @@ app.controller('MainCtrl', ['$scope', 'posts',
 
     $scope.addPost = ->
       return unless $scope.title && $scope.title != ''
-      $scope.posts.push(
+      posts.create(
         title: $scope.title
         link: $scope.link
-        upvotes: 0
-        comments: []
       )
       $scope.title = ''
       $scope.link = ''
