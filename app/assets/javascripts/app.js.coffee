@@ -17,6 +17,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
         url: '/posts/{id}'
         templateUrl: 'posts/_posts.html'
         controller: 'PostsCtrl'
+        resolve:
+          post: ['$stateParams', 'posts',
+            ($stateParams, posts)->
+              posts.get($stateParams.id)
+          ]
       )
 
     $urlRouterProvider.otherwise('home')

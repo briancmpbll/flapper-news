@@ -1,17 +1,18 @@
 app = angular.module('flapperNews')
-app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts',
-  ($scope, $stateParams, posts)->
-    $scope.post = posts.posts[$stateParams.id]
+app.controller('PostsCtrl', ['$scope', 'posts', 'post'
+  ($scope, posts, post)->
+    $scope.post = post
 
     $scope.addComment = ->
       return unless $scope.body != ''
-      $scope.post.comments.push(
+      posts.addComment(post.id,
         body: $scope.body
         author: 'user'
-        upvotes: 0
+      ).success( (comment)->
+        $scope.post.comments.push(comment)
       )
       $scope.body = ''
 
     $scope.incrementUpvotes = (comment)->
-      comment.upvotes += 1
+      posts.upvoteComment(post, comment)
 ])
