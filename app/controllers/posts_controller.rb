@@ -1,5 +1,6 @@
 # Controller for posts
 class PostsController < ApplicationController
+  include Votable
   before_action :set_post, only: [:show, :upvote]
 
   def index

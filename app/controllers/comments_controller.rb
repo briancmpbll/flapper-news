@@ -1,5 +1,6 @@
 # Controller for comments
 class CommentsController < ApplicationController
+  include Votable
   before_action :set_post
   before_action :set_comment, only: [:upvote]
 
