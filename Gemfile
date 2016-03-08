@@ -10,6 +10,7 @@ gem 'angular-rails-templates'
 gem 'coffee-rails'
 gem 'responders'
 gem 'angular_rails_csrf'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
